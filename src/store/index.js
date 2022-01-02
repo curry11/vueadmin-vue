@@ -4,12 +4,21 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: { //状态管理
+  state: { //统一的状态管理
+    token: ''
   },
-  mutations: {
+
+  mutations: {  //通过mutations来操作state
+
+    SET_TOKEN: (state, token) => {  //通过该方法将token传入state中的token
+      state.token = token
+      localStorage.setItem("token", token)
+    }
   },
+
   actions: {
   },
+
   modules: {
   }
 })

@@ -90,6 +90,9 @@ export default {
         if (valid) {    //this.loginForm 是json 格式，需要用qs转换成form表单格式
           this.$axios.post('/login', this.loginForm).then(res => {
             const jwt = res.headers['authorization']  //后端生成jwt放入请求头中返回给前端
+            this.$store.commit('SET_TOKEN', jwt) //调用stror 中的SET_TOKEN方法将jwt存入store中
+
+            this.$router.push("/index")  //登录成功跳转到首页
           });
         } else {
           console.log('error submit!!');
